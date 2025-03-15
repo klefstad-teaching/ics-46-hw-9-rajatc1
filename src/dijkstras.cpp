@@ -3,19 +3,20 @@
 #include <limits>
 
 using namespace std;
+
 vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& previous) {
-    int n = G.numVertices;
+    int n = G.numVertices; // Number of vertices in the graph
     vector<int> distances(n, INF); // Initialize distances to infinity
     distances[source] = 0; // Distance to source is 0
     previous.resize(n, -1); // Initialize previous nodes to -1
 
     // Min-heap priority queue: (distance, vertex)
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-    pq.push({0, source});
+    pq.push({0, source}); // Start with the source vertex
 
     while (!pq.empty()) {
-        int u = pq.top().second;
-        int dist_u = pq.top().first;
+        int u = pq.top().second; // Current vertex
+        int dist_u = pq.top().first; // Distance to current vertex
         pq.pop();
 
         // Skip if we've already found a better path to u
@@ -23,19 +24,19 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
 
         // Explore neighbors of u
         for (const Edge& e : G[u]) {
-            int v = e.dst;
-            int weight = e.weight;
+            int v = e.dst; // Neighbor vertex
+            int weight = e.weight; // Edge weight
 
             // Relaxation step
             if (distances[u] + weight < distances[v]) {
-                distances[v] = distances[u] + weight;
-                previous[v] = u;
-                pq.push({distances[v], v});
+                distances[v] = distances[u] + weight; // Update distance
+                previous[v] = u; // Update previous node
+                pq.push({distances[v], v}); // Enqueue the neighbor
             }
         }
     }
 
-    return distances;
+    return distances; // Return the shortest distances
 }
 
 vector<int> extract_shortest_path(const vector<int>& distances, const vector<int>& previous, int destination) {
