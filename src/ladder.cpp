@@ -42,7 +42,7 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
         string last_word = ladder.back();
 
         for (const string& word : word_list) {
-            if (is_adjacent(last_word, word) {
+            if (is_adjacent(last_word, word)) {
                 if (word == end_word) {
                     ladder.push_back(word);
                     return ladder;

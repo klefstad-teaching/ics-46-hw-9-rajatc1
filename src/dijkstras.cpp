@@ -3,7 +3,6 @@
 #include <limits>
 
 using namespace std;
-
 vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& previous) {
     int n = G.numVertices;
     vector<int> distances(n, INF); // Initialize distances to infinity
@@ -56,7 +55,7 @@ vector<int> extract_shortest_path(const vector<int>& distances, const vector<int
 void print_path(const vector<int>& v, int total) {
     for (size_t i = 0; i < v.size(); ++i) {
         cout << v[i];
-        if (i < v.size() - 1) cout << " -> ";
+        if (i < v.size() - 1) cout << " "; // Use space instead of "->"
     }
-    cout << " (Total cost: " << total << ")" << endl;
+    cout << "\nTotal cost is " << total << endl; // Match the expected format
 }
