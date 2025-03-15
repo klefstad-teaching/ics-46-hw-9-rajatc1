@@ -72,11 +72,17 @@ void load_words(set<string>& word_list, const string& file_name) {
 }
 
 void print_word_ladder(const vector<string>& ladder) {
+    if (ladder.empty()) {
+        cout << "No word ladder found.\n";
+        return;
+    }
+
+    cout << "Word ladder found: ";
     for (size_t i = 0; i < ladder.size(); ++i) {
         cout << ladder[i];
-        if (i < ladder.size()) cout << " -> ";
+        if (i < ladder.size()) cout << " "; // Add space between words, but not after the last word
     }
-    cout << endl;
+    cout << "\n"; // Add a newline at the end
 }
 
 void verify_word_ladder() {
