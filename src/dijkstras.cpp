@@ -5,22 +5,18 @@
 using namespace std;
 
 vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& previous) {
-    int n = G.numVertices; // Number of vertices in the graph
-    vector<int> distances(n, INF); // Initialize distances to infinity
+    vector<int> distances(G.numVertices, INF); // Initialize distances to infinity
     distances[source] = 0; // Distance to source is 0
-    previous.resize(n, -1); // Initialize previous nodes to -1
+    previous.assign(G.numVertices, -1); // Initialize previous nodes to -1
 
     // Min-heap priority queue: (distance, vertex)
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
     pq.push({0, source}); // Start with the source vertex
 
     while (!pq.empty()) {
-        int u = pq.top().second; // Current vertex
-        int dist_u = pq.top().first; // Distance to current vertex
+        auto [cost, u] = pq.top();
         pq.pop();
-
-        // Skip if we've already found a better path to u
-        if (dist_u > distances[u]) continue;
+        if (cost > distances[u]) continue;
 
         // Explore neighbors of u
         for (const Edge& e : G[u]) {
