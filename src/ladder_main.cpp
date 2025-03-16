@@ -16,11 +16,9 @@ int main() {
     }
 
     vector<string> ladder = generate_word_ladder(start, end, word_list);
-    if (ladder.empty()) {
-        cout << "No ladder found from " << start << " to " << end << endl;
-    } else {
-        print_word_ladder(ladder);
-    }
+    
+    print_word_ladder(ladder);
+    
 
     return 0;
 }
