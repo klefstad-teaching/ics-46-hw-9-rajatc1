@@ -56,7 +56,7 @@ vector<int> extract_shortest_path(const vector<int>& distances, const vector<int
 void print_path(const vector<int>& v, int total) {
     for (size_t i = 0; i < v.size(); ++i) {
         cout << v[i];
-        if (i < v.size()) cout << " "; // Use space instead of "->"
+        if (i < v.size()) cout << " "; // Add space after each vertex
     }
-    cout << "\nTotal cost is " << total << endl; // Match the expected format
+    cout << "\nTotal cost is " << total << endl; // Add a newline after the total cost
 }

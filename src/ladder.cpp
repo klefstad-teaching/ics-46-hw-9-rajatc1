@@ -80,7 +80,7 @@ void print_word_ladder(const vector<string>& ladder) {
     cout << "Word ladder found: "; // Prefix for valid ladders
     for (size_t i = 0; i < ladder.size(); ++i) {
         cout << ladder[i];
-        if (i < ladder.size() - 1) cout << " "; // Add space between words, but not after the last word
+        if (i < ladder.size()) cout << " "; // Add space after each word, including the last one
     }
     cout << "\n"; // Add a newline at the end
 }
